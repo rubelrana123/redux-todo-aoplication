@@ -1,14 +1,12 @@
-import {DELETED, ALLCOMPLETED,COLORSELECTED, CLEARECOMPLETED,ADDED, TOGGLED} from "./ActionTypes.js";
+
+import { ADDED, ALLCOMPLETED, CLEARECOMPLETED, COLORSELECTED, DELETED, TOGGLED } from "./ActionTypes";
 import { initialState } from "./initialState";
 
 const nextTodoId = (todos) => {
-    const maxId = todos.reduce(
-        (maxId, todos) => Math.max(todos,maxId),
-        0
-      );
-      return maxId + 1
-}
-export const reducer = (state = initialState, action) => {
+    const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
+    return maxId + 1;
+};
+  const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADDED:
            return [
@@ -17,17 +15,18 @@ export const reducer = (state = initialState, action) => {
                 id : nextTodoId(state)
             }
            ]
-        case TOGGLED : 
-        return state.map(todo => {
-            if(todo.id !== action.payload){
-                return todo;
-            }
-            return {
-                ...todo,
-                completed : !todo.completed
-    
-            }
-        })
+           case TOGGLED:
+            return state.map((todo) => {
+                if (todo.id !== action.payload) {
+                    return todo;
+                }
+
+                return {
+                    ...todo,
+                    completed: !todo.completed,
+                };
+            });
+
      
         case COLORSELECTED : 
         const {todoId, color} = action.payload;
@@ -57,3 +56,4 @@ export const reducer = (state = initialState, action) => {
           return state;
     }
 }
+export default reducer;

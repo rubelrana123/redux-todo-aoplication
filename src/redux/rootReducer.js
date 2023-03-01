@@ -1,7 +1,8 @@
-import { findByAltText } from '@testing-library/react';
 import filterReducer from './filters/reducer';
 import todosReducer from './todos/reducer';
-export const rootReducer = ({
+import { combineReducers } from "redux";
+ const rootReducer = combineReducers({
     todos : todosReducer,
     filter : filterReducer
-})
+});
+export default rootReducer;

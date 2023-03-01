@@ -1,6 +1,6 @@
- const ADDED = 'todos/added';
- const TOGGLED = 'todos/toggled';
- const DELETED = 'todos/deleted';
- const CLEARECOMPLETED = 'todos/clearcompleted';
- const ALLCOMPLETED = 'todos/allcompleted';
- const COLORSELECTED = 'todos/colorselected';
+ export const ADDED = 'todos/added';
+ export const TOGGLED = "todos/toggled";
+ export const DELETED = 'todos/deleted';
+ export const CLEARECOMPLETED = 'todos/clearcompleted';
+ export const ALLCOMPLETED = 'todos/allcompleted';
+ export const COLORSELECTED = 'todos/colorselected';

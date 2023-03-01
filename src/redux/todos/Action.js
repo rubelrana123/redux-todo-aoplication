@@ -2,23 +2,23 @@ import {DELETED, ALLCOMPLETED,COLORSELECTED, CLEARECOMPLETED,ADDED, TOGGLED} fro
 
 export const deleted = (id) => {
     return {
-        value : DELETED,
+        type : DELETED,
         payload : id
     }
 }
 export const allcompleted = () => {
     return{
-        value : ALLCOMPLETED
+        type : ALLCOMPLETED
     }
 }
 export const clearcompleted = () =>{
     return {
-        value : CLEARECOMPLETED
+        type : CLEARECOMPLETED
     }
 }
 export const added = (todoText) => {
     return {
-        value : ADDED,
+        type : ADDED,
         payload : todoText
     }
 }
@@ -34,7 +34,7 @@ export const colorselected = (todoId, color) => {
 }
 export const toggled = (todoId) => {
     return {
-        valuie : TOGGLED,
+        type : TOGGLED,
         payload : todoId
     }
 }
