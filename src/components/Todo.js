@@ -1,7 +1,7 @@
 
 import { useDispatch } from "react-redux";
 import cancelImage from "../assets/images/cancel.png";
-import { toggled } from "../redux/todos/Action";
+import { colorselected, deleted, toggled } from "../redux/todos/Action";
  
 export default function Todo({todo}) {
     const dispatch = useDispatch();
@@ -11,7 +11,12 @@ export default function Todo({todo}) {
     const handleStatusChange = (todoId) => {
         dispatch(toggled(todoId));
     };
-
+    const handleColorChange = (id, color) => {
+        dispatch(colorselected(id, color))
+    }
+  const handleDelete = (id)=> {
+         dispatch(deleted(id))
+  }
  
     return (
         <div className="flex justify-start items-center p-2 hover:bg-gray-100 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0">
@@ -35,11 +40,11 @@ export default function Todo({todo}) {
                 )}
             </div>
 
-            <div className="select-none flex-1 line-through">
+            <div className={`select-none flex-1 ${completed && ' line-through'}`}>
                 {text}
             </div>
 
-            {/* <div
+            <div
                className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer hover:bg-green-500 border-green-500 ${
                 color === "green" && "bg-green-500"
             }`}
@@ -58,11 +63,12 @@ export default function Todo({todo}) {
                     color === "red" && "bg-red-500"
                 }`}
                 onClick={() => handleColorChange(id, "red")}
-            ></div> */}
+            ></div>
             <img
                 src={cancelImage}
                 className="flex-shrink-0 w-4 h-4 ml-2 cursor-pointer"
                 alt="Cancel"
+                onClick={() => handleDelete(id)}
             />
         </div>
     );
